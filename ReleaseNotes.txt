@@ -1,0 +1,50 @@
+Versão 3.0.1
+  - substituido modo de compilacao de dvips para pdftex (modelo de tcc)
+  - melhoramento na figura de capa (tcc)
+  - adicionado pacote epstopdf que permite que imagens eps sejam compiladas com pdftex (tcc)
+  
+Versão 3.0.0
+  - Substituição do pacote abntcite para abntex2cite (apenas na proposta)
+  - Substituido modo de compilação de dvips para pdftex (apenas proposta)
+  - Adicionado pacote epstopdf para manter compatibilidade com figuras .eps (apenas proposta)  
+
+Versão 2.0.2
+  - Resolvido bug que resetava o contador de numeracao das equacaoes a cada capitulo. Agora a contagem passa a
+    ser sequencial.
+	
+Versão 2.0.1
+  - Adicionado comando para criar a capa.
+  - Atualizado modelo de TCC.
+
+Versão 1.3.3
+  - Corrigido alinhamento dos títulos de seções até o nível 6.
+  - No sumário agora aparece só até o nível 4.
+  - Atualizado exemplo de resumo e abstract.
+  - Corrigida a dedicatória.
+  - Footnotes são exibidas em negrito.
+  - Atualizados exemplos de proposta e TCC.
+  - Inseridos exemplos com fontes nas figuras e tabelas.
+  - Correção do termo de aprovação de TCC. O mesmo é atualizado automaticamente
+    conforme tenha um ou dois autores.
+
+Versão 1.3.2
+  - Configuração da bibliografia no modelo de TCC foi mudada para não mais
+    abreviar automaticamente os nomes dos autores. Todos os nomes são colocados
+    por extenso na lista de bibliografias. Cabe ao usuário abreviar os nomes de forma
+    adequada, mantendo por extenso apenas sobrenome e prenome, abreviando nomes do meio.
+
+Versão 1.3.1
+  - Atualizada capa da proposta de TCC (corigido espaçamento desigual).
+  - Atualizado o termo de aprovação de TCC.
+  - Corrigidas as strings default dos comandos \orientador e \coorientador.
+
+
+Versão 1.3
+  - Atualizado exemplo de TCC.
+  - Modificado pacote de configuração de TCCs (utfprtexTCC.sty)
+     - Incluido nele os comandos para montagem da folha de rosto e termo de aprovação.
+  - Modificado modelo para inserir mais espaço entre o título do capítulo e o texto.
+    Por padrão esse espaço é de 2cm, mas pode ser modificado redefinindo o comando
+    \espacoAfterChapter. Por exemplo, para mudar para 3cm: \renewcommand{\espacoAfterChapter}{3cm}
+  - Incluido novos comandos para fornecer informações para montagem
+    do termo de aprovação: \bancaA, \bancaB, \bancaC, \bancaD e \atanumero

@@ -1,0 +1,30 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{1.42.2.1 }
+
+\bibitem{Grainger1994}
+\abntrefinfo{Grainger e Stevenson}{GRAINGER; STEVENSON}{1994}
+{GRAINGER, John~J.; STEVENSON, Willian~D. \textbf{Power System Analysis}. New
+  York, USA: McGraw-Hill, Inc., 1994. 787~p.}
+
+\bibitem{Anderson1977}
+\abntrefinfo{Anderson e Fouad}{ANDERSON; FOUAD}{1977}
+{ANDERSON, Paul~M.; FOUAD, A.~A. \textbf{Power System Control and Stability}.
+  Ames, USA: The Iowa State University Press, 1977. 464~p.}
+
+\bibitem{Glover2002}
+\abntrefinfo{Glover e Sarma}{GLOVER; SARMA}{2002}
+{GLOVER, J.~Duncan; SARMA, Mulukutla~S. \textbf{Power System Analysis and
+  Design}. 3. ed. Pacific Grove, USA: Brooks/Cole, 2002. 656~p.}
+
+\bibitem{abntex-doc}
+\abntrefinfo{Frasson}{FRASSON}{2003}
+{FRASSON, Miguel V.~S. \textbf{Classe ABNT. confeção de trabalhos acadêmicos em
+  \LaTeX~ segundo as normas ABNT}.
+[S.l.], 2003. Dispon{\'\i}vel em:
+  \htmladdnormallink{$<$http:\-/\-/abntex\-.codigolivre\-.org\-.br$>$}{http://abntex.codigolivre.org.br}.}
+
+\end{thebibliography}

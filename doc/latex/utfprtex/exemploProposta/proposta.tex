@@ -1,0 +1,364 @@
+% 
+% Exemplo de utilização do modelo utfprtex.
+%
+% por Miguel Moreto, 2011
+% 
+% Use por sua conta e risco.
+% Definição da classe a ser utilizada:
+\documentclass[capchap,sumarioincompleto,a4paper,12pt,ruledheader,normaltoc]{utfprtex}%
+% O significado das opções é apresentado no manual do abntex.
+
+% Sempre mantenha seu Tex / Miktex atualizado.
+
+% O pacote utfprtexTCC está jundo com o utfprtex e contém definições específicas para trabalhos de conclusão de curso. Outros pacotes serão definidos para outros tipos de documentos, como dissertações e teses.
+\usepackage{utfprtexPropostaTCC}
+
+\usepackage[latin1]{inputenc}
+
+
+% A linha abaixo chama o pacote hyperref, configurado para usar o programa 
+% pdftex.exe. Se você utiliza outra forma de
+% gerar o pdf, altere a linha abaixo com a opção adequada. Veja o manual do 
+% hyperref para saber as opções disponíveis e outras configurações do pacote.
+%
+%
+% Insira seus dados nos campos pdfauthor, pdftitle, pdfsubject e pdfcreator, estes dados
+% aparecerão nas propriedades do arquivo pdf.
+\usepackage[pdftex,linktocpage=true,pdfauthor={Seu nome},pdftitle={Titulo do documento},pdfsubject={Exemplo de documento},pdfcreator={LaTeX e Dvips}]{hyperref} % dvips-> pdftex (alterado por Otavio Gomes em 4/9/2015)
+
+%Para suprimir a hyphenation é utilizado os comandos abaixo:
+\usepackage{hyphenat}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+\hyphenchar\font=-1
+\sloppy
+
+%\usepackage[alf,abnt-emphasize=bf,abnt-etal-text=it,bibjustif,abnt-etal-cite=2,abnt-etal-list=0,abnt-full-initials=yes]{abntcite}% (olsolete, removido por Otavio Gomes em 4/9/2015)
+\usepackage[alf,abnt-emphasize=bf,abnt-etal-text=it,bibjustif,abnt-etal-cite=2,abnt-etal-list=0,abnt-full-initials=yes,abnt-repeated-author-omit=yes,abnt-url-package=hyperref,abnt-last-names=abnt,abnt-missing-year=void]{abntex2cite} %(Adicionado por Otavio Gomes em 4/9/2015)
+
+% Se você quiser utilizar o estilo de citação numérica, ex. [1], [2], comente a linha acima e use o código que está comentado nas 3 linhas abaixo:
+  %\usepackage[num,bibjustif,recuo=1cm]{abntex2cite}
+  %\usepackage{colchetesrefs} % Coloca colchetes na lista de referências ao final do documento.
+  %\citebrackets{[}{]}
+% Não esqueça do comando \bibliographystyle{abnt-num} antes the chamar o seu arquivo .bib. (\bibliography) ao final do documento para que a lista de referências também esteja no formato numérico.
+
+\usepackage{nomencl} % Pacote necessário para a lista de siglas.
+% O comando a seguir diz ao Latex para salvar as siglas em um arquivo separado:
+%\fazlistasiglas[Lista de Abreviaturas e Siglas] % Parâmetro opcional é o título da lista.
+
+
+% Pacote para inserção de figuras em formato .eps.
+\usepackage{graphicx}
+
+\usepackage{epstopdf} % adicionado por Otavio Gomes em 9/4/2015
+
+% Pacote com mais opções para equações
+\usepackage{amsmath}
+\usepackage{pgfgantt}
+
+% Se quiseres trocar a fonte do documento, descomente a linha abaixo. O parâmetro cmr
+% indica a fonte ComputerModern, aquela padrão do latex.
+%\renewcommand{\familydefault}{cmr}
+
+% A seguinte linha evita algumas mensagens de warning por parte do hyperref.
+% Comentar se o pacote hyperref não estiver sendo utilizado.
+\pdfstringdefDisableCommands{\edef\uppercase{}}
+
+
+% Os comandos a seguir ajustam o posicionamento dos floats (figures e tables).
+\renewcommand{\floatpagefraction}{0.90}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+\setlength{\intextsep}{5pt}
+\setlength{\textfloatsep}{5pt}
+\setlength{\floatsep}{5pt}
+
+
+%%%%%%%%% Início das definições iniciais %%%%%%%%%
+
+
+\autorA{Fábio Brignol de Moraes}
+\autorAdados{Endereço A\\ emailA@email.com\\ telefone A}
+
+% Se o trabalho tiver dois autores, descomentar as linhas abaixo:
+\autorB{Nome do Aluno B}
+\autorBdados{Endereço B\\ emailB@email.com\\ telefone B}
+
+\titulo{Exemplo de Proposta de Trabalho de Conclusão de Curso de Engenharia Elétrica UTFPR - PB} % Título do documento
+
+% Nos 3 comandos abaixo o parâmetro opcional entre [] pode ser preenchido para o caso de
+% alguma dessas pessoas ser mulher. Se não especificado, vale o valor default.
+%  Valores default: Orientador, Co-orientador e Coordenador.
+\orientador[Orientador]{Nome do Orientador}
+\orientadorDados{Endereço orientador\\ emailorientador@email.com\\ telefone orientador}
+\coorientador[Coorientadora]{Nome da coorientadora}
+\coorientadorDados{Endereço coorientador\\ emailcoorientador@email.com\\ telefone coorientador}
+
+\areaconcentracao{Área de concentração 1} % Área de concentração
+
+\palavraschave{\LaTeX, formatação de textos, exemplos} % Palavras chave, não usado na proposta de TCC
+\keywords{\LaTeX, text formatting, examples} % Palavras chave em inglês, não usado na proposta de TCC
+
+% Instruções para banca examinadora (somenta para dissertação):
+%   -> O primeiro membro da banca, definido pelo comando \bancaAPGTEX é o presidente da banca
+%      (provavelmente o orientador).
+%   -> O segundo membro será automaticamente o Co-orientador se ele existir e for definido pelo
+%      comando \coorientadorPGTEX
+%   -> Os demais membros da banca são definidos pelos comandos \bancaBPGTEX, \bancaCPGTEX, \bancaDPGTEX e
+%      \bancaEPGTEX.
+%   -> Deixando os parametros dos comandos dos membros da banca vazios (exemplo \bancaAPGTEX{}), fará
+%      com que as respectivas linhas de assinatura não apareçam.
+%   -> Os comandos suportam um parâmetro adicional, entre colchetes, onde é colocado o grau de titulação
+%      do respectivo membro da banca. Se este parâmetro adicional não for utilizado, então o valor padrão
+%      "Doutor" é atribuido.
+%
+%\bancaAPGTEX{Membro A da banca}
+%\bancaBPGTEX{Membro B da banca}
+%\bancaCPGTEX[Dr., UFSC]{Membro C da banca}
+%\bancaDPGTEX{} % Como exemplo, o membro D da banca não vai aparecer por estar vazio.
+%\bancaEPGTEX{Membro E da banca}
+%%\bancaFPGTEX[Doutor, MIT]{Membro F da banca}
+%%\bancaGPGTEX[Doutor]{Membro G da banca}
+
+\local{PATO BRANCO}
+
+\data{2014} % Ano do trabalho
+
+%%%%%%%%% Fim das definições iniciais %%%%%%%%%
+
+\begin{document} % Início do documento.
+
+% Monta a capa do documento.
+\capa
+
+\chapter{Identificação do Projeto}
+
+\FichaDeDados
+
+%==================================================================
+\chapter{Caracterização e Justificativa do TCC}
+\label{cap:caracterizacao} % o label serve como identificador para fazer referência cruzada ao número do capítulo no meio do texto.
+
+Esta é uma das etapas mais importantes onde o pesquisador refletirá sobre o ``PORQUÊ'' da mesma, identificando as razões pela escolha do tema. O mesmo, deverá ser apresentado nos níveis pessoal, social, científico e institucional. A justificativa deverá convencer, a quem vier a ler o projeto, por exemplo, sobre a importância e a relevância do trabalho para a sociedade, para a comunidade científica e para a instituição de ensino que proporciona o estudo.
+
+Descrever objetivamente, com o apoio da literatura, o problema focalizado, sua relevância no contexto da área inserida e sua importância específica para o avanço do conhecimento ou da tecnologia.
+
+NO MÁXIMO 2 PÁGINAS.
+
+%===================================================================
+\chapter{Objetivos e Metas}
+\label{cap:objetivos}
+
+O objetivo geral será a síntese geral do que se pretende alcançar. Por isso, o verbo que introduz o texto deve estar no infinitivo e indicar uma ação ampla. Já, os objetivos específicos são aqueles que explicarão os detalhes da pesquisa e conduzirão os trabalhos de maneira prática para que o objetivo geral seja alcançado. Devem ser claros, específicos e mensuráveis.
+
+Explicitar os objetivos e metas do projeto. Justificar a proposição e sua inserção na área proposta.
+
+Deve conter os objetivos Geral e Específicos.
+
+%====================================================================
+\chapter{Metodologia e Procedimentos}
+\label{cap:metodologia}
+
+Este capítulo é destinado a esclarecer como, com quem, onde, de que forma será realizado trabalho de Conclusão de Curso. É de suma importância detalhar os procedimentos, as técnicas e os instrumentos utilizados, com base na literatura pertinente.
+
+Descrever sucintamente a metodologia empregada para a execução do projeto e como os objetivos serão alcançados. Este capítulo deverá contemplar os seguintes itens durante sua redação.
+
+NO MÁXIMO(3 PÁGINAS).
+
+%---------------------------------------------------------------------
+\section{Método de Pesquisa}
+\label{sec:metodo}
+
+Tipo de pesquisa (quanto aos objetivos e procedimentos), método e técnicas de pesquisa utilizados, tanto para coleta quanto para análise das informações. As proposições técnicas do Projeto.
+
+%---------------------------------------------------------------------
+\section{Plano de Trabalho}
+\label{sec:plano}
+
+Apresentação da abordagem que se pretende dar para desenvolver o projeto; descrição detalhada das atividades a serem executadas.
+%-------------------------------------------------------------------
+\section{Cronograma}
+\label{sec:cronograma}
+
+Utilizar o gráfico de Gantt para apresentação do cronograma. Pode ser gerado pelo Latex usando o pacote \verb|pgfgantt|. Um exemplo é dado abaixo, na Figura \ref{fig:gantt}. Veja mais opções desse pacote no seu manual, arquivo pdf, em 
+
+\url{http://ctan.org/tex-archive/graphics/pgf/contrib/pgfgantt}
+
+São definidas as seguintes atividades:
+
+\begin{enumerate}
+	\item Atividade 1, descrição.
+	\item Atividade 2, descrição.
+	\item Atividade 3, descrição.
+	\item Escrita da monografia.
+	\item Defesa da monografia.
+\end{enumerate}
+
+
+\begin{figure}[htbp]
+\centering
+\captionsetup{width=0.80\textwidth, font=footnotesize, textfont=bf}
+% Monta o gráfico de Gantt. Formate-o conforme seu gosto mexendo nos parâmetros.
+\begin{ganttchart}[% Início das opções
+hgrid={*1{draw=black}},
+vgrid={*1{draw=black}}, % Desenha grids orizontais e verticais
+time slot format=isodate-yearmonth, % Formato de data de entrada YYYY-MM (ex. 2013-09)
+x unit=10mm, % Tamanho da célula.
+compress calendar, % Mostra só os meses.
+title label font=\large\color{blue}, % Formatação da fonte do título. (Ano e meses)
+title/.style={fill=gray, draw=black}, % Formatação do preenchimento do título.
+bar/.append style={fill=red, rounded corners=5pt}, % Formatação das barras, preenchimento com borda arredondada.
+bar top shift=.1, % Espaço vazio em cima de cada barra (valor de 0 a 1).
+bar height=.8, % tamanho da barra (de 0 a 1).
+title top shift=.05,
+title height=.9
+]{2013-09}{2014-09} % Intervalo do gráfico de Gantt. Ajuste conforme necessário.
+\gantttitlecalendar{year, month} \\
+\ganttbar{1}{2013-09}{2013-12} \\
+\ganttbar{2}{2013-11}{2014-02} \\
+\ganttbar{3}{2014-02}{2014-06} \\
+\ganttbar{4}{2013-11}{2014-08}\\
+\ganttbar{5}{2014-08}{2014-09}
+\end{ganttchart}
+	\caption{Cronograma proposto}
+	\vspace{-3.5mm}
+	\caption*{Fonte: Autoria Própria}
+	\label{fig:gantt}
+\end{figure}
+%-----------------------------------------------------------------------------
+\section{Plano Organizacional}
+\label{sec:planoorg}
+
+Definir os papéis, as responsabilidades e autoridades no âmbito do projeto, quando o projeto for desenvolvido em equipe.
+%---------------------------------------------------------------------------------
+\section{Recursos Necessários}
+\label{sec:recursos}
+
+Quantidade e especialidade dos recursos humanos; materiais necessários; viagens e estadias; orçamento do projeto, mostrando o custo dos recursos; outros recursos.
+%-----------------------------------------------------------------------------
+\section{Riscos e Dificuldades}
+\label{sec:riscos}
+
+Comentar sobre possíveis dificuldades e riscos potenciais que poderão interferir na execução das ações propostas e comprometer o alcance das metas e objetivos preconizados. Explicitar as medidas previstas para contornar ou superar essas dificuldades.
+
+%=============================================================================
+\chapter{Resultados Esperados}
+\label{cap:resultados}
+
+Descrever os resultados e/ou produtos esperados.
+
+Estimar a repercussão e/ou impactos socioeconômicos, técnico-científicos e ambientais dos resultados esperados na solução do problema focalizado.
+
+NO MÁXIMO ($\frac{1}{2}$ PÁGINA)
+%==============================================================================
+\chapter{Exemplo de uso}
+
+Esse é um exemplo de uso. Veja mais no capítulo \ref{cap:exemplos_gerais}.
+
+CASSINI IMAGING CENTRAL LABORATORY FOR OPERATIONS\footnote{Exemplo de nota de rodapé.}
+Posted: January 29, 2009
+
+Recent images of Titan from NASA's Cassini spacecraft affirm the presence of lakes of liquid hydrocarbons by capturing changes in the lakes brought on by rainfall.
+For several years, Cassini scientists have suspected that dark areas near the north and south poles of Saturn's largest satellite might be liquid-filled lakes. An analysis published today in the journal Geophysical Research Letters of recent pictures of Titan's south polar region reveals new lake features not seen in images of the same region taken a year earlier. The presence of extensive cloud systems covering the area in the intervening year suggests that the new lakes could be the result of a large rainstorm and that some lakes may thus owe their presence, size and distribution across Titan's surface to the moon's weather and changing seasons.
+
+
+\begin{figure}[htbp]
+	\centering
+	\captionsetup{width=0.70\textwidth, font=footnotesize, textfont=bf} % Tamanho da legenda da figura (70% da largura do texto).
+	\includegraphics[width=0.7\linewidth]{./imagens/PIA11147_modest.eps} % Nome do arquivo e tamanho da figura (70% da largura do texto).
+	\caption{These mosaics of the south pole of Saturn's moon Titan, made from images taken almost one year apart, show changes in dark areas that may be lakes filled by seasonal rains of liquid hydrocarbons.}
+	\vspace{-3.5mm}
+	\caption*{Fonte: NASA/JPL/Space Science Institute}
+	\label{fig:mosaics} % Label para usar como referência cruzada.
+\end{figure}
+ 
+The high-resolution cameras of Cassini's Imaging Science Subsystem have now surveyed nearly all of Titan's surface at a global scale. An updated Titan map, being released today by the Cassini Imaging Team, includes the first near-infrared images of the leading hemisphere portion of Titan's northern "lake district" captured on Aug. 15-16, 2008. (The leading hemisphere of a moon is that which always points in the direction of motion as the moon orbits the planet.) These ISS images complement existing high-resolution data from Cassini's Visible and Infrared Mapping Spectrometer (VIMS) and RADAR instruments.
+
+Such observations have documented greater stores of liquid methane in the northern hemisphere than in the southern hemisphere. And, as the northern hemisphere moves toward summer, Cassini scientists predict large convective cloud systems will form there and precipitation greater than that inferred in the south could further fill the northern lakes with hydrocarbons.
+
+Some of the north polar lakes are large. If full, Kraken Mare -- at 400,000 square kilometers -- would be almost five times the size of North America's Lake Superior. All the north polar dark ``lake'' areas observed by ISS total more than 510,000 square kilometers -- almost 40 percent larger than Earth's largest ``lake'', the Caspian Sea.
+
+However, evaporation from these large surface reservoirs is not great enough to replenish the methane lost from the atmosphere by rainfall and by the formation and eventual deposition on the surface of methane-derived haze particles.
+
+``A recent study suggested that there's not enough liquid methane on Titan's surface to resupply the atmosphere over long geologic timescales'', said Dr. Elizabeth Turtle, Cassini imaging team associate at the Johns Hopkins University Applied Physics Lab in Laurel, Md., and lead author of today's publication. ``Our new map provides more coverage of Titan's poles, but even if all of the features we see there were filled with liquid methane, there's still not enough to sustain the atmosphere for more than 10 million years''.
+
+Combined with previous analyses, the new observations suggest that underground methane reservoirs must exist.
+
+Titan is the only satellite in the solar system with a thick atmosphere in which a complex organic chemistry occurs. ``It's unique'', Turtle said. ``How long Titan's atmosphere has existed or can continue to exist is still an open question''.
+
+That question and others related to the moon's meteorology and its seasonal cycles may be better explained by the distribution of liquids on the surface. Scientists also are investigating why liquids collect at the poles rather than low latitudes, where dunes are common instead.
+
+``Titan's tropics may be fairly dry because they only experience brief episodes of rainfall in the spring and fall as peak sunlight shifts between the hemispheres'', said Dr. Tony DelGenio of NASA's Goddard Institute for Space Studies in New York, a co-author and a member of the Cassini imaging team. ``It will be interesting to find out whether or not clouds and temporary lakes form near the equator in the next few years''.
+
+Titan and the transformations on its surface brought about by the changing seasons will continue to be a major target of investigation throughout Cassini's Equinox mission.
+
+The Cassini-Huygens mission is a cooperative project of NASA, the European Space Agency (ESA) and the Italian Space Agency. The Jet Propulsion Laboratory  (JPL), a division of the California Institute of Technology in Pasadena, manages the Cassini-Huygens mission for NASA's Science Mission Directorate, Washington. The Cassini orbiter and its two onboard cameras were designed, developed and assembled at JPL. The imaging team consists of scientists from the U.S., England, France, and Germany. The imaging operations center and team leader (Dr. C. Porco) are based at the Space Science Institute in Boulder, Colo. The Applied Physics Laboratory, a division of Johns Hopkins University, meets critical national challenges through the innovative application of science and technology.
+
+%========================================================================================
+\chapter{Exemplos gerais} % Conforme template 2010 da BU, o texto da seção é em maiúsculas.
+\label{cap:exemplos_gerais}
+
+Exemplo de citação longa:
+\begin{citado}
+The Cassini-Huygens mission is a cooperative project of NASA, the European Space Agency (ESA) and the Italian Space Agency. The Jet Propulsion Laboratory  (JPL), a division of the California Institute of Technology in Pasadena, manages the Cassini-Huygens mission for NASA's Science Mission Directorate, Washington.
+\end{citado}
+
+%----------------------------------------------------------------------------------------
+\section{Exemplos de equação}
+\label{sec:equacao}
+
+Em \eqref{eq:equacao1} pode se ver um exemplo de equação. Usa-se o comando \verb|\ref| para referenciar uma equação pelo seu label.
+
+\begin{equation}
+  \phi = \vec{\alpha}\otimes \upsilon\omega\psi^{jk}_{n-1}
+  \label{eq:equacao1}
+\end{equation}
+
+Uma equação de várias linhas cada uma com um número, equações \eqref{eq:equacao2} e \eqref{eq:equacao3}. O caractere \& é utilizado para alinhar as equações.
+\begin{align}
+  a_1& = b_1+c_1 \label{eq:equacao2}\\
+  a_2& = b_2+c_2-d_2+e_2\label{eq:equacao3}
+\end{align}
+
+A equação \eqref{eq:equacao4} são duas com um só número:
+\begin{equation}
+  \begin{aligned}
+     a_1& = b_1+c_1 \\
+     a_2& = b_2+c_2-d_2+e_2
+  \end{aligned}
+  \label{eq:equacao4}
+\end{equation}
+
+Veja mais sobre equações no pacote \verb|amsmath|. Consulte o manual desse pacote em \url{http://www.ctan.org/pkg/amsmath}:
+%--------------------------------------------------------------------------------
+\section{Exemplo de Subescrito e sobescrito}
+\label{sec:subesob}
+$H_2O$ - Símbolo químico da água
+
+$H_2SO_4$ - Ácido sulfúrico
+
+$x^2+3x+1=0$ - Equação de Segundo grau
+
+$y^{12}+5y^2+5=0$ - Equação com expoente maior que 9
+%--------------------------------------------------------------------------------
+\section{Exemplos de citação de referências bibliográficas}
+\label{sec:refbibliogr}
+
+\cite{Grainger1994}
+
+\cite{Anderson1977,Glover2002}
+
+Conforme \citeonline{abntex-doc} a metodologia proposta é, bla bla bla...
+
+
+% REFERÊNCIAS BIBLIOGRÁFICAS
+% Bibliografia do arquivo bibliografia.bib
+\bibliographystyle{abnt-num} % Estilo autor-data
+\bibliography{bibliografia}    % As referencias deste testo estão no arquivo bibliografia.bib
+%\ABNTaddcontentsline{toc}{chapter}{Referências bibliográficas}
+
+\end{document}
+
