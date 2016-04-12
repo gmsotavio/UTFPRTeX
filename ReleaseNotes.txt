@@ -1,3 +1,6 @@
+Versão 3.0.3
+  - substituido "Engenheiro" por "Engenheiro Eletricista" no texto de aprovacao do TCC
+  
 Versão 3.0.2
   - adicionada extensao da figura da capa ao arquivo utfprtexTCC, para compatibilizar com o formato
 	aceito pelo pdfTex
