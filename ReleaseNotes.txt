@@ -1,6 +1,9 @@
+Versão 3.0.2
+  - adicionada extensao da figura da capa ao arquivo utfprtexTCC, para compatibilizar com o formato
+	aceito pelo pdfTex
+  
 Versão 3.0.1
   - substituido modo de compilacao de dvips para pdftex (modelo de tcc)
-  - melhoramento na figura de capa (tcc)
   - adicionado pacote epstopdf que permite que imagens eps sejam compiladas com pdftex (tcc)
   
 Versão 3.0.0
