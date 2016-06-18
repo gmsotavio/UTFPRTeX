@@ -27,6 +27,13 @@
 \settowidth{\mylen}{\cftfigpresnum\cftfigaftersnum}
 \addtolength{\cftfignumwidth}{\mylen}
 
+% Para inserir o 'Tabela X: ' na lista de tabelas (adicionado por Otavio Gomes em 18/06/16)
+
+\renewcommand{\cfttabpresnum}{\tablename\enspace}
+\renewcommand{\cfttabaftersnum}{:}
+\settowidth{\mylen}{\cfttabpresnum\cfttabaftersnum}
+\addtolength{\cfttabnumwidth}{\mylen}
+
 
 % Formatando Captions das figuras e tabelas:
 %\usepackage[font=small,labelfont=bf]{caption}

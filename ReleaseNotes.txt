@@ -1,3 +1,6 @@
+Versão 3.0.4
+  - corrigida falha que não inseria a palavra "Tabela: X" na lista de tabelas, apenas o número da tabela.
+  
 Versão 3.0.3
   - substituido "Engenheiro" por "Engenheiro Eletricista" no texto de aprovacao do TCC
   
